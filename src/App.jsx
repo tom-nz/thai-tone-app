@@ -401,7 +401,8 @@ export default function App() {
           : `อักษรกลาง${clusterLabel} คำเป็น (ผันได้ครบ 5 เสียง)`;
       }
     } else if (highConsonants.includes(primaryConsonant) || initial.startsWith("ห")) {
-      highConsonant = initial;
+      let highConsonant = initial;
+    let lowConsonant = initial;
       lowConsonant = pairMap[primaryConsonant] || primaryConsonant;
     } else if (lowSingleConsonants.includes(primaryConsonant)) {
       lowConsonant = initial;
@@ -880,16 +881,18 @@ export default function App() {
       c,
       aboveBelowVowel || "",
       "",
-      rest || "อ",
+      rest || "อ"
     );
     setInputText(newWord);
+    setLinesData(calculateTones(newWord, mode, colorMid, colorHigh, colorLow));
   };
 
   const handleQuickVowelClick = (vowelObj) => {
     const { initial } = parseThaiWord(inputText);
     const cons = initial || "ก";
-    const newWord = `${vowelObj.front}${cons}${vowelObj.rear}`;
+    const newWord = `${vowelObj.front || ""}${cons}${vowelObj.rear || ""}`;
     setInputText(newWord);
+    setLinesData(calculateTones(newWord, mode, colorMid, colorHigh, colorLow));
   };
 
   const handleGenerate = async () => {
