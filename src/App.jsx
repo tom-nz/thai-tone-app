@@ -1,5 +1,10 @@
 var highConsonant = "";
 var lowConsonant = "";
+var highC = "#ea580c";
+var lowC = "#2563eb";
+var midC = "#16a34a";
+var highConsonant = "";
+var lowConsonant = "";
 
 // --- ฟังก์ชันแยกและรวม พยัญชนะ + สระเดิม ---
 const THAI_CONSONANTS = /[ก-ฮ]/g;
