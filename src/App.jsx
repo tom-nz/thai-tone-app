@@ -1,10 +1,3 @@
-var highConsonant = "";
-var lowConsonant = "";
-var highC = "#ea580c";
-var lowC = "#2563eb";
-var midC = "#16a34a";
-var highConsonant = "";
-var lowConsonant = "";
 
 // --- ฟังก์ชันแยกและรวม พยัญชนะ + สระเดิม ---
 const THAI_CONSONANTS = /[ก-ฮ]/g;
@@ -408,8 +401,7 @@ export default function App() {
           : `อักษรกลาง${clusterLabel} คำเป็น (ผันได้ครบ 5 เสียง)`;
       }
     } else if (highConsonants.includes(primaryConsonant) || initial.startsWith("ห")) {
-      let highConsonant = initial;
-    let lowConsonant = initial;
+      highConsonant = initial;
       lowConsonant = pairMap[primaryConsonant] || primaryConsonant;
     } else if (lowSingleConsonants.includes(primaryConsonant)) {
       lowConsonant = initial;
@@ -888,18 +880,16 @@ export default function App() {
       c,
       aboveBelowVowel || "",
       "",
-      rest || "อ"
+      rest || "อ",
     );
     setInputText(newWord);
-    setLinesData(calculateTones(newWord, mode, colorMid, colorHigh, colorLow));
   };
 
   const handleQuickVowelClick = (vowelObj) => {
     const { initial } = parseThaiWord(inputText);
     const cons = initial || "ก";
-    const newWord = `${vowelObj.front || ""}${cons}${vowelObj.rear || ""}`;
+    const newWord = `${vowelObj.front}${cons}${vowelObj.rear}`;
     setInputText(newWord);
-    setLinesData(calculateTones(newWord, mode, colorMid, colorHigh, colorLow));
   };
 
   const handleGenerate = async () => {
