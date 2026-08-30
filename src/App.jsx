@@ -1,3 +1,5 @@
+var highConsonant = "";
+var lowConsonant = "";
 
 // --- ฟังก์ชันแยกและรวม พยัญชนะ + สระเดิม ---
 const THAI_CONSONANTS = /[ก-ฮ]/g;
