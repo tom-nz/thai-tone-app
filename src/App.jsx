@@ -241,10 +241,10 @@ export default function App() {
     ช: "ฉ",
     ฌ: "ฉ",
     ฉ: "ช",
-    ซ: "ศ",
-    ศ: "ซ",
-    ษ: "ซ",
-    ส: "ซ", ศ: "ซ", ษ: "ซ",
+    "ซ": "ส",
+    "ส": "ซ",
+    "ศ": "ซ",
+    "ษ": "ซ",
     ท: "ถ",
     ธ: "ถ",
     ฑ: "ฐ",
@@ -700,9 +700,7 @@ export default function App() {
 
     if (highConsonants.includes(primaryConsonant) || initial.startsWith("ห")) {
       highConsonant = initial;
-      lowConsonant =
-        Object.keys(pairMap).find((k) => pairMap[k] === primaryConsonant) ||
-        primaryConsonant;
+      lowConsonant = pairMap[primaryConsonant] || primaryConsonant;
     } else if (lowSingleConsonants.includes(primaryConsonant)) {
       lowConsonant = initial;
       highConsonant = `ห${initial}`;
