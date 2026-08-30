@@ -880,16 +880,18 @@ export default function App() {
       c,
       aboveBelowVowel || "",
       "",
-      rest || "อ",
+      rest || "อ"
     );
     setInputText(newWord);
+    setLinesData(calculateTones(newWord, mode, colorMid, colorHigh, colorLow));
   };
 
   const handleQuickVowelClick = (vowelObj) => {
     const { initial } = parseThaiWord(inputText);
     const cons = initial || "ก";
-    const newWord = `${vowelObj.front}${cons}${vowelObj.rear}`;
+    const newWord = `${vowelObj.front || ""}${cons}${vowelObj.rear || ""}`;
     setInputText(newWord);
+    setLinesData(calculateTones(newWord, mode, colorMid, colorHigh, colorLow));
   };
 
   const handleGenerate = async () => {
